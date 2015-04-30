@@ -13,13 +13,14 @@
             android:id="@+id/foundrg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="分类"
-                android:gravity="center"
+
                 android:textStyle="bold"
                 android:button="@null"
                 android:layout_weight="1" />
@@ -27,7 +28,7 @@
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
+
                 android:textStyle="bold"
                 android:text="精品"
                 android:button="@null"
@@ -37,7 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="排行"
-                android:gravity="center"
+
                 android:textStyle="bold"
                 android:button="@null"
                 android:layout_weight="1" />
@@ -45,33 +46,56 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="3dp"
+            android:layout_height="2dp"
             android:orientation="horizontal"
             android:layout_alignBottom="@+id/foundrg">
 
-            <View
-                android:id="@+id/foundview1"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:visibility="gone"
-                android:background="#ffff2b9a" />
+                android:orientation="horizontal">
 
-            <View
-                android:id="@+id/foundview2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:visibility="gone"
-                android:background="#ffff2b9a" />
+                <View
+                    android:id="@+id/foundview1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
 
-            <View
-                android:id="@+id/foundview3"
+                    android:visibility="gone"
+                    android:background="#ffff2b9a" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:visibility="gone"
-                android:background="#ffff2b9a" />
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/foundview2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:background="#ffff2b9a" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/foundview3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    android:background="#ffff2b9a" />
+            </LinearLayout>
+
+
         </LinearLayout>
     </RelativeLayout>
 
