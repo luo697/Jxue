@@ -19,17 +19,15 @@
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="分类"
-
-                android:textStyle="bold"
                 android:button="@null"
                 android:layout_weight="1" />
 
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-
-                android:textStyle="bold"
+                android:gravity="center"
                 android:text="精品"
                 android:button="@null"
                 android:layout_weight="1" />
@@ -38,8 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="排行"
-
-                android:textStyle="bold"
+                android:gravity="center"
                 android:button="@null"
                 android:layout_weight="1" />
         </RadioGroup>

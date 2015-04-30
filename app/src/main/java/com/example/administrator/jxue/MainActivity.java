@@ -14,6 +14,10 @@ import com.example.administrator.jxue.fragment.FoundFragment;
 
 public class MainActivity extends FragmentActivity {
 
+
+    public MainActivity() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

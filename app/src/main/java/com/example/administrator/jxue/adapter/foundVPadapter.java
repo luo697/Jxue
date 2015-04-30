@@ -1,4 +1,4 @@
-package com.example.administrator.jxue;
+package com.example.administrator.jxue.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

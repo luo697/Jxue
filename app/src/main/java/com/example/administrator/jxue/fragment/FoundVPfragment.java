@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.administrator.jxue.data.Lists;
+
 /**
  * Created by Administrator on 2015-4-30.
  */
@@ -25,15 +27,20 @@ public class FoundVPfragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=null;
         int position = getArguments().getInt(KEY);
-        if (position==0){
+        if(Lists.Jplist!=null){
+            if (position==0){
+
+            }
+            if (position==1){
+
+            }
+            if(position==2){
+
+            }
+        }else{
 
         }
-        if (position==1){
 
-        }
-        if(position==2){
-
-        }
         return view;
     }
 }
