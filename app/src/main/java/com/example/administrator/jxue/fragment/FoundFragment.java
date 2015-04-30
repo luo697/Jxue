@@ -45,6 +45,7 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case 0:
+                    //设置适配器
                     fondviewpager.setAdapter(new foundVPadapter(getFragmentManager()));
                     break;
             }
@@ -60,7 +61,7 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
         init(view);
         return view;
     }
-
+    //设置最大的ViewPager
     private void init(View view) {
         fondviewpager = ((ViewPager) view.findViewById(R.id.foundViewpager));
         fondviewpager.setCurrentItem(1);
