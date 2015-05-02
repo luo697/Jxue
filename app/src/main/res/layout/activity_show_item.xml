@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.administrator.jxue.ShowItemActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="#19000000"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:id="@+id/show_item_back_image"
+            android:layout_width="wrap_content"
+            android:src="@drawable/back_white"
+            android:padding="4dp"
+            android:onClick="onClick"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:onClick="onClick"
+            android:src="@drawable/ic_action_share"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="13"
+        android:layout_height="0dp"></LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="#ffff7fb0"
+        android:onClick="onClick"
+        android:id="@+id/show_item_learnandbuy"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+        <TextView
+            android:text="@string/startlearn"
+            android:layout_width="wrap_content"
+            android:textSize="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:textColor="#fff"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="@string/buyalready"
+            android:layout_width="wrap_content"
+            android:textSize="25dp"
+            android:textColor="#fff"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

@@ -12,12 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.administrator.jxue.HttpHelper;
 import com.example.administrator.jxue.R;
 import com.example.administrator.jxue.adapter.foundVPadapter;
 import com.example.administrator.jxue.bean.Assortment;
 import com.example.administrator.jxue.bean.Cous;
 import com.example.administrator.jxue.bean.Marks;
 import com.example.administrator.jxue.bean.Rank;
+import com.example.administrator.jxue.bean.boutiquevpdata;
 import com.example.administrator.jxue.data.Lists;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -30,6 +32,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class FoundFragment extends Fragment implements ViewPager.OnPageChangeListener {
@@ -39,14 +42,15 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
     private Assortment assortment;
     private Rank rank;
     private ViewPager fondviewpager;
+    private boutiquevpdata boutiquevpdata;
     private View[] views=new View[3];
     private Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case 0:
-                    //设置适配器
                     fondviewpager.setAdapter(new foundVPadapter(getFragmentManager()));
+                    fondviewpager.setCurrentItem(1);
                     break;
             }
         }
@@ -63,8 +67,7 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
     }
     //设置最大的ViewPager
     private void init(View view) {
-        fondviewpager = ((ViewPager) view.findViewById(R.id.foundViewpager));
-        fondviewpager.setCurrentItem(1);
+
         fondviewpager.setOnPageChangeListener(this);
         views[0] = view.findViewById(R.id.foundview1);
         views[1] = view.findViewById(R.id.foundview2);
@@ -78,10 +81,10 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
         String path = "http://course.jaxus.cn/api/category//53e19aea81cc22417c36c1f0/courses?platform=1&channel=xiaomi&start=0&end=20&version=2";
         utils = new HttpUtils();
         Lists.Jplist = new ArrayList<Cous>();
-        Lists.markss = new ArrayList<Marks>();
+        Lists.boutiquevps=new ArrayList<boutiquevpdata>();
         Lists.ranks=new ArrayList<Rank>();
         Lists.assortments = new ArrayList<Assortment>();
-        Lists.markseses=new ArrayList<Marks>();
+        boutiquevpdata=null;
         assortment=null;
         cous = null;
         marks = null;
@@ -102,16 +105,24 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
                         cous.setEnrollNum(json1.getInt("enrollNum"));
                         cous.setIconUrl(json1.getString("iconUrl"));
 
+//                        if ()
+//                        double listPrice = json1.getDouble("listPrice");
+//                        if(listPrice!=0){
+//                            cous.setListPrice(json1.getDouble("listPrice"));
+//
+//                        }
                         JSONArray arr2 = json1.getJSONArray("marks");
+                        List<Marks> listmarks=new ArrayList<Marks>();
                         for (int j = 0; j < arr2.length(); j++) {
                             marks = new Marks();
                             JSONObject obj1 = arr2.getJSONObject(j);
                             marks.setColor(obj1.getString("color"));
                             marks.setImageUrl(obj1.getString("imageUrl"));
                             marks.setTitle(obj1.getString("title"));
-                            Lists.markss.add(marks);
+
+                            listmarks.add(marks);
                         }
-                        cous.setMarks(Lists.markss);
+                        cous.setMarks(listmarks);
                         cous.setPrice(json1.getDouble("price"));
                         cous.setProviderName(json1.getString("providerName"));
                         cous.setRate(json1.getInt("rate"));
@@ -173,24 +184,25 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
                         rank.setBgUrl(json1.getString("bgUrl"));
                         rank.setEnrollNum(json1.getInt("enrollNum"));
                         rank.setIconUrl(json1.getString("iconUrl"));
-
+//                        cous.setListPrice(json1.getDouble("listPrice"));
                         JSONArray arr2 = json1.getJSONArray("marks");
+                        List<Marks> listmarkss=new ArrayList<Marks>();
                         for (int j = 0; j < arr2.length(); j++) {
                             marks = new Marks();
                             JSONObject obj1 = arr2.getJSONObject(j);
                             marks.setColor(obj1.getString("color"));
                             marks.setImageUrl(obj1.getString("imageUrl"));
                             marks.setTitle(obj1.getString("title"));
-                            Lists.markseses.add(marks);
+                           listmarkss.add(marks);
                         }
-                        rank.setMarks(  Lists.markseses);
+                        rank.setMarks(listmarkss);
                         rank.setPrice(json1.getDouble("price"));
                         rank.setProviderName(json1.getString("providerName"));
                         rank.setRate(json1.getInt("rate"));
                         rank.setTitle(json1.getString("title"));
                         Lists.ranks.add(rank);
                     }
-                    handler.sendEmptyMessage(0);
+
 
 
 
@@ -202,6 +214,44 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
             @Override
             public void onFailure(HttpException e, String s) {
                 Toast.makeText(getActivity(),"连接失败请检查网络连接3",Toast.LENGTH_SHORT).show();
+            }
+        });
+        //精品的viewpager
+
+        String path4="http://course.jaxus.cn/api/category//53e19aea81cc22417c36c1f0/advs?channel=xiaomi&version=3";
+        utils.send(HttpRequest.HttpMethod.GET, path4, new RequestCallBack<String>() {
+            @Override
+            public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                try {
+                    JSONObject object = new JSONObject(objectResponseInfo.result);
+                    JSONArray advs = object.getJSONArray("advs");
+                    for (int i = 0; i < advs.length(); i++) {
+                        boutiquevpdata = new boutiquevpdata();
+                        JSONObject object1 = advs.getJSONObject(i);
+                        boutiquevpdata.setImageUrl(object1.getString("imageUrl"));
+                        JSONArray arr2 = object1.getJSONArray("marks");
+                        List<Marks> listmarksss=new ArrayList<Marks>();
+                        for (int j = 0; j < arr2.length(); j++) {
+                            marks = new Marks();
+                            JSONObject obj1 = arr2.getJSONObject(j);
+                            marks.setColor(obj1.getString("color"));
+                            marks.setImageUrl(obj1.getString("imageUrl"));
+                            marks.setTitle(obj1.getString("title"));
+                            listmarksss.add(marks);
+                        }
+                        boutiquevpdata.setMarks(listmarksss);
+                        boutiquevpdata.setTitle(object1.getString("title"));
+                        Lists.boutiquevps.add(boutiquevpdata);
+                    }
+                    handler.sendEmptyMessage(0);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(HttpException e, String s) {
+
             }
         });
 

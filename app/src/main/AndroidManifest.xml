@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ShowItemActivity"
+            android:label="@string/title_activity_show_item" >
+        </activity>
+        <activity
+            android:name=".ShowMoreActivity"
+            android:label="@string/title_activity_show_more" >
+        </activity>
     </application>
 
 </manifest>

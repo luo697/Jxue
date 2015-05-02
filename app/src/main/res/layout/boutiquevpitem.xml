@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.example.administrator.jxue.ImageViewWithWidth
+        android:id="@+id/boutique_vpimage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_launcher"/>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignBottom="@+id/boutique_vpimage"
+       >
+       <TextView
+           android:id="@+id/boutique_tvtype"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="[ 活动 ]"
+
+           android:textColor="#fff"
+           android:textSize="18sp"
+           android:layout_margin="5dp"/>
+       <TextView
+           android:id="@+id/boutique_tvtitle"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="劳模，“吾”一起嗨！"
+           android:textColor="#fff"
+           android:textSize="18sp"
+           android:layout_margin="5dp"
+           android:layout_toRightOf="@+id/boutique_tvtype"/>
+       </RelativeLayout>
+</RelativeLayout>

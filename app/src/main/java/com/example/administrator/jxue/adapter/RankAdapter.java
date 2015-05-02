@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.administrator.jxue.BitmapHelper;
 import com.example.administrator.jxue.R;
 import com.example.administrator.jxue.bean.Cous;
+import com.example.administrator.jxue.bean.Rank;
 import com.example.administrator.jxue.data.Lists;
 
 import java.net.URLEncoder;
@@ -19,11 +20,11 @@ import java.util.List;
 /**
  * Created by Administrator on 2015-5-1.
  */
-public class BoutiqueAdapter extends BaseAdapter{
+public class RankAdapter extends BaseAdapter{
     private Context context;
-    private List<Cous> list;
+    private List<Rank> list;
 
-    public BoutiqueAdapter(Context context, List<Cous> list) {
+    public RankAdapter(Context context, List<Rank> list) {
         this.context = context;
         this.list = list;
     }
@@ -50,11 +51,11 @@ public class BoutiqueAdapter extends BaseAdapter{
             convertView.setTag(new BoutiqueHolder(convertView));
         }
         BoutiqueHolder holder= ((BoutiqueHolder) convertView.getTag());
-        Cous cous= Lists.Jplist.get(position);
+        Rank rank= Lists.ranks.get(position);
         holder.listprice.setVisibility(View.GONE);
         holder.view2.setVisibility(View.GONE);
         holder.marks.setVisibility(View.GONE);
-        String imgUrl=cous.getBgUrl();
+        String imgUrl=rank.getBgUrl();
         if(imgUrl!=null){
             String replace=null;
             if(imgUrl.contains("")){
@@ -68,23 +69,23 @@ public class BoutiqueAdapter extends BaseAdapter{
 
         }
 
-        if (cous.getListPrice()!=null){
-            holder.listprice.setVisibility(View.VISIBLE);
-            holder.view2.setVisibility(View.VISIBLE);
-            holder.listprice.setText("￥"+cous.getListPrice()/100);
-        }
-        if (cous.getMarks().size()!=0){
+//        if (rank.getListPrice()!=null){
+//            holder.listprice.setVisibility(View.VISIBLE);
+//            holder.view2.setVisibility(View.VISIBLE);
+//            holder.listprice.setText("￥"+rank.getListPrice()/100);
+//        }
+        if (rank.getMarks().size()!=0){
             holder.marks.setVisibility(View.VISIBLE);
-            BitmapHelper.getUtils().display(holder.marks,cous.getMarks().get(0).getImageUrl());
-         }
-        if (cous.getPrice()==0){
+            BitmapHelper.getUtils().display(holder.marks,rank.getMarks().get(0).getImageUrl());
+        }
+        if (rank.getPrice()==0){
             holder.price.setText("免费");
         }else{
-            holder.price.setText("￥"+cous.getPrice()/100);
+            holder.price.setText("￥"+rank.getPrice()/100);
         }
-        holder.user.setText(cous.getEnrollNum()+"");
-        holder.author.setText(cous.getProviderName());
-        holder.title.setText(cous.getTitle());
+        holder.user.setText(rank.getEnrollNum()+"");
+        holder.author.setText(rank.getProviderName());
+        holder.title.setText(rank.getTitle());
         return convertView;
     }
 
@@ -93,14 +94,14 @@ public class BoutiqueAdapter extends BaseAdapter{
         ImageView image,marks;
         View view2;
         public BoutiqueHolder(View view){
-           title= ((TextView) view.findViewById(R.id.boutique_title));
-           author= ((TextView) view.findViewById(R.id.boutique_author));
-           user= ((TextView) view.findViewById(R.id.boutique_user));
-           listprice= ((TextView) view.findViewById(R.id.boutique_listprice));
-           price= ((TextView) view.findViewById(R.id.boutique_price));
-           image= ((ImageView) view.findViewById(R.id.boutique_image));
-           view2=view.findViewById(R.id.boutique_view2);
-           marks= ((ImageView) view.findViewById(R.id.boutique_marks));
+            title= ((TextView) view.findViewById(R.id.boutique_title));
+            author= ((TextView) view.findViewById(R.id.boutique_author));
+            user= ((TextView) view.findViewById(R.id.boutique_user));
+            listprice= ((TextView) view.findViewById(R.id.boutique_listprice));
+            price= ((TextView) view.findViewById(R.id.boutique_price));
+            image= ((ImageView) view.findViewById(R.id.boutique_image));
+            view2=view.findViewById(R.id.boutique_view2);
+            marks= ((ImageView) view.findViewById(R.id.boutique_marks));
         }
     }
 }

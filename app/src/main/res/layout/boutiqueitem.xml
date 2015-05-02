@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/biankuang">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -16,7 +17,7 @@
                 android:textSize="17sp"
                 android:textColor="#000"
                 android:layout_margin="10dp"
-                android:textStyle="bold"/>
+                />
             <com.example.administrator.jxue.ImageViewWithWidth
                 android:id="@+id/boutique_image"
                 android:layout_width="150dp"
@@ -42,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_below="@+id/boutique_author"
-                android:background="#D5D5D5"
+                android:background="#50D5D5D5"
                 />
             <TextView
                 android:id="@+id/boutique_user"
@@ -86,11 +87,18 @@
                 android:layout_height="1dp"
                 android:layout_below="@+id/boutique_view"
                 android:layout_toLeftOf="@+id/boutique_price"
-
                 android:background="#000"
                 android:layout_marginTop="14dp"
 
                 />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D5D5D5"
+                android:layout_below="@+id/boutique_price"
+                />
+
+
         </RelativeLayout>
 
 
