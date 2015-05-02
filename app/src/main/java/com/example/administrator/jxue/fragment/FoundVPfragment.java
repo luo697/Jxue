@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.example.administrator.jxue.R;
+import com.example.administrator.jxue.adapter.BoutiqueAdapter;
 import com.example.administrator.jxue.data.Lists;
 
 /**
@@ -32,7 +35,9 @@ public class FoundVPfragment extends Fragment{
 
             }
             if (position==1){
-
+                view=inflater.inflate(R.layout.boutiquelist,container,false);
+                ListView list = ((ListView) view.findViewById(R.id.boutique_list));
+                list.setAdapter(new BoutiqueAdapter(getActivity(),Lists.Jplist));
             }
             if(position==2){
 

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            >
+            <TextView
+                android:id="@+id/boutique_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="日常出行妆容"
+                android:textSize="17sp"
+                android:textColor="#000"
+                android:layout_margin="10dp"
+                android:textStyle="bold"/>
+            <com.example.administrator.jxue.ImageViewWithWidth
+                android:id="@+id/boutique_image"
+                android:layout_width="150dp"
+                android:layout_height="80dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_launcher"/>
+            <com.example.administrator.jxue.ImageViewWithWidth
+                android:id="@+id/boutique_marks"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_alignLeft="@+id/boutique_image"
+                android:src="@drawable/ic_launcher"/>
+            <TextView
+                android:id="@+id/boutique_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beautify"
+                android:layout_alignBottom="@+id/boutique_image"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"/>
+            <View
+                android:id="@+id/boutique_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/boutique_author"
+                android:background="#D5D5D5"
+                />
+            <TextView
+                android:id="@+id/boutique_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15446"
+                android:layout_margin="5dp"
+                android:layout_below="@id/boutique_view"
+                android:layout_toLeftOf="@+id/boutique_image"/>
+            <ImageView
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:src="@drawable/comment_number"
+                android:layout_alignBottom="@id/boutique_user"
+                android:layout_toLeftOf="@+id/boutique_user"
+                android:layout_below="@+id/boutique_view"/>
+            <TextView
+                android:id="@+id/boutique_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/boutique_view"
+                android:textColor="#ffff2b9a"
+                android:text="免费"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:id="@+id/boutique_listprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥50.00"
+                android:layout_toLeftOf="@+id/boutique_price"
+                android:layout_below="@id/boutique_view"
+                android:textSize="13sp"
+                android:textColor="#000"
+                android:layout_alignBaseline="@+id/boutique_price"/>
+            <View
+                android:id="@+id/boutique_view2"
+                android:layout_width="50dp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/boutique_view"
+                android:layout_toLeftOf="@+id/boutique_price"
+
+                android:background="#000"
+                android:layout_marginTop="14dp"
+
+                />
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

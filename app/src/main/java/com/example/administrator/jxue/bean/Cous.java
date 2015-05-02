@@ -7,6 +7,15 @@ import java.util.List;
  */
 public class Cous {
     private String bgUrl,iconUrl,providerName,title;
+    private Double listPrice;
+
+    public Double getListPrice() {
+        return listPrice;
+    }
+
+    public void setListPrice(Double listPrice) {
+        this.listPrice = listPrice;
+    }
 
     public String getBgUrl() {
         return bgUrl;

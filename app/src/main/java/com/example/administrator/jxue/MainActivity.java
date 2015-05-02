@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.administrator.jxue.fragment.FoundFragment;
+import com.lidroid.xutils.BitmapUtils;
 
 
 public class MainActivity extends FragmentActivity {
@@ -22,6 +23,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        BitmapHelper.init(this);
         showFragment(new FoundFragment());
     }
 

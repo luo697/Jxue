@@ -104,7 +104,8 @@
         <com.example.administrator.jxue.MyViewPager
             android:id="@+id/foundViewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#D5D5D5">
 
         </com.example.administrator.jxue.MyViewPager>
     </LinearLayout>
