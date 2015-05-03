@@ -3,12 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffe8e8e8">
-    <ListView
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/boutique_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
         android:dividerHeight="10dp"
-        android:layout_margin="10dp"></ListView>
+        android:layout_margin="10dp"></com.handmark.pulltorefresh.library.PullToRefreshListView>
 
 </LinearLayout>

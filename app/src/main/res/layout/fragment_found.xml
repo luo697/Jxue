@@ -17,6 +17,7 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/fragment_found_rb1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -25,6 +26,7 @@
                 android:layout_weight="1" />
 
             <RadioButton
+                android:id="@+id/fragment_found_rb2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -33,6 +35,7 @@
                 android:layout_weight="1" />
 
             <RadioButton
+                android:id="@+id/fragment_found_rb3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="排行"
