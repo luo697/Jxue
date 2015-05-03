@@ -8,6 +8,9 @@ import java.util.List;
 public class Cous {
     private String bgUrl,iconUrl,providerName,title;
     private Double listPrice;
+    private int enrollNum,rate;
+    private   List<Marks>  marks;
+    private double  price;
 
     public Double getListPrice() {
         return listPrice;
@@ -81,9 +84,7 @@ public class Cous {
         this.price = price;
     }
 
-    private int enrollNum,rate;
-private   List<Marks>  marks;
-    private double  price;
+
 
 
 

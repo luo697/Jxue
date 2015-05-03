@@ -7,6 +7,18 @@ import java.util.List;
  */
 public class Rank {
     private String bgUrl,iconUrl,providerName,title;
+    private Double listPrice;
+    private int enrollNum,rate;
+    private   List<Marks>  marks;
+    private double  price;
+
+    public Double getListPrice() {
+        return listPrice;
+    }
+
+    public void setListPrice(Double listPrice) {
+        this.listPrice = listPrice;
+    }
 
     public String getBgUrl() {
         return bgUrl;
@@ -72,8 +84,6 @@ public class Rank {
         this.price = price;
     }
 
-    private int enrollNum,rate;
-    private   List<Marks>  marks;
-    private double  price;
+
 
 }

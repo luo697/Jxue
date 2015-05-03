@@ -44,6 +44,14 @@ public class RankAdapter extends BaseAdapter{
         return position;
     }
 
+    public void Clear(){
+        list.clear();
+        notifyDataSetChanged();
+    }
+    public void Add(List<Rank> lists){
+        list.addAll(lists);
+        notifyDataSetChanged();
+    }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView==null){
@@ -58,22 +66,22 @@ public class RankAdapter extends BaseAdapter{
         String imgUrl=rank.getBgUrl();
         if(imgUrl!=null){
             String replace=null;
+            String replace1=null;
             if(imgUrl.contains("")){
-                replace=imgUrl.replace(" ", "%20");
-            }else{
-                String substring=imgUrl.substring(imgUrl.lastIndexOf("/")+1,imgUrl.lastIndexOf("."));
-                String encode = URLEncoder.encode(substring);
-                replace=imgUrl.replace(substring, encode);
+                replace1=imgUrl.replace(" ", "%20");
             }
+            String substring=replace1.substring(imgUrl.lastIndexOf("/")+1,imgUrl.lastIndexOf("."));
+            String encode = URLEncoder.encode(substring);
+            replace=replace1.replace(substring, encode);
             BitmapHelper.getUtils().display(holder.image,replace);
 
         }
 
-//        if (rank.getListPrice()!=null){
-//            holder.listprice.setVisibility(View.VISIBLE);
-//            holder.view2.setVisibility(View.VISIBLE);
-//            holder.listprice.setText("￥"+rank.getListPrice()/100);
-//        }
+        if (rank.getListPrice()!=null){
+            holder.listprice.setVisibility(View.VISIBLE);
+            holder.view2.setVisibility(View.VISIBLE);
+            holder.listprice.setText("￥"+rank.getListPrice()/100);
+        }
         if (rank.getMarks().size()!=0){
             holder.marks.setVisibility(View.VISIBLE);
             BitmapHelper.getUtils().display(holder.marks,rank.getMarks().get(0).getImageUrl());

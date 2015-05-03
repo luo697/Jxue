@@ -99,7 +99,7 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
             public void onSuccess(ResponseInfo<String> stringResponseInfo) {
                 //精品
                 try {
-                    Log.d("----------aaaa----------", stringResponseInfo.result);
+       //             Log.d("----------aaaa----------", stringResponseInfo.result);
                     JSONObject js = new JSONObject(stringResponseInfo.result);
                     JSONArray arr = js.getJSONArray("courses");
 
@@ -110,12 +110,12 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
                         cous.setEnrollNum(json1.getInt("enrollNum"));
                         cous.setIconUrl(json1.getString("iconUrl"));
 
-//                        if ()
-//                        double listPrice = json1.getDouble("listPrice");
-//                        if(listPrice!=0){
-//                            cous.setListPrice(json1.getDouble("listPrice"));
-//
-//                        }
+                        if (!json1.isNull("listPrice")){
+                            cous.setListPrice(json1.getDouble("listPrice"));
+                        }
+
+
+
                         JSONArray arr2 = json1.getJSONArray("marks");
                         List<Marks> listmarks = new ArrayList<Marks>();
                         for (int j = 0; j < arr2.length(); j++) {
@@ -189,6 +189,9 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
                         rank.setBgUrl(json1.getString("bgUrl"));
                         rank.setEnrollNum(json1.getInt("enrollNum"));
                         rank.setIconUrl(json1.getString("iconUrl"));
+                        if (!json1.isNull("listPrice")){
+                            rank.setListPrice(json1.getDouble("listPrice"));
+                        }
 //                        cous.setListPrice(json1.getDouble("listPrice"));
                         JSONArray arr2 = json1.getJSONArray("marks");
                         List<Marks> listmarkss = new ArrayList<Marks>();

@@ -1,6 +1,7 @@
 package com.example.administrator.jxue.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,13 +66,13 @@ public class BoutiqueAdapter extends BaseAdapter{
         String imgUrl=cous.getBgUrl();
         if(imgUrl!=null){
             String replace=null;
+            String replace1=null;
             if(imgUrl.contains("")){
-                replace=imgUrl.replace(" ", "%20");
-            }else{
-                String substring=imgUrl.substring(imgUrl.lastIndexOf("/")+1,imgUrl.lastIndexOf("."));
-                String encode = URLEncoder.encode(substring);
-                replace=imgUrl.replace(substring, encode);
+                replace1=imgUrl.replace(" ", "%20");
             }
+            String substring=replace1.substring(imgUrl.lastIndexOf("/")+1,imgUrl.lastIndexOf("."));
+            String encode = URLEncoder.encode(substring);
+            replace=replace1.replace(substring, encode);
             BitmapHelper.getUtils().display(holder.image,replace);
 
         }
