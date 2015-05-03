@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.administrator.jxue.HttpHelper;
 import com.example.administrator.jxue.MyViewPager;
@@ -50,12 +51,17 @@ public class FoundVPfragment extends Fragment implements AdapterView.OnItemClick
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case 0:
-
+                    boutiqueadapter.Add(Lists.Jplist);
+  //                  Toast.makeText(getActivity(),"下啦刷新",Toast.LENGTH_SHORT).show();
+                    list_boutique.onRefreshComplete();
                     break;
             }
         }
     };
     private PullToRefreshListView list_boutique;
+    private BoutiqueAdapter boutiqueadapter;
+    private int start=0;
+    private int end=20;
 
     public static FoundVPfragment getFoundVPfragment(int position){
         FoundVPfragment fragment=new FoundVPfragment();
@@ -78,13 +84,15 @@ public class FoundVPfragment extends Fragment implements AdapterView.OnItemClick
             if (position==1){
                 view=inflater.inflate(R.layout.boutiquelist,container,false);
                 list_boutique = ((PullToRefreshListView) view.findViewById(R.id.boutique_list));
-                list_boutique.setAdapter(new BoutiqueAdapter(getActivity(),Lists.Jplist));
+                boutiqueadapter = new BoutiqueAdapter(getActivity(), Lists.Jplist);
+                list_boutique.setAdapter(boutiqueadapter);
                 //给PullToRefresh添加头部
                 ListView listView = list_boutique.getRefreshableView();
                 View view1=View.inflate(getActivity(),R.layout.boutiqueviewpager,null);
                 ViewPager boutiqueVP= ((ViewPager) view1.findViewById(R.id.boutique_vp));
                 boutiqueVP.setAdapter(new BoutiqueVPAdapter(getFragmentManager()));
                 listView.addHeaderView(view1);
+                list_boutique.setMode(PullToRefreshBase.Mode.BOTH);
                 list_boutique.setOnItemClickListener(this);
                 //监听上拉加载，下拉刷新
                 list_boutique.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
@@ -93,6 +101,9 @@ public class FoundVPfragment extends Fragment implements AdapterView.OnItemClick
 
                     @Override
                     public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                        start=0;
+                        end=20;
+                        boutiqueadapter.Clear();
                         Lists.Jplist = new ArrayList<Cous>();
                         cous = null;
                         marks = null;
@@ -144,14 +155,69 @@ public class FoundVPfragment extends Fragment implements AdapterView.OnItemClick
 
                             @Override
                             public void onFailure(HttpException e, String s) {
-
+                                Toast.makeText(getActivity(), "连接失败请检查网络连接", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
-
+                    //上拉加载
                     @Override
                     public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+                        start+=20;
+                        end+=20;
+                        Lists.Jplist=new ArrayList<Cous>();
+                        cous = null;
+                        marks = null;
+                        String path="http://course.jaxus.cn/api/category//53e19aea81cc22417c36c1f0/courses?platform=1&channel=xiaomi&start="+start+"&end="+end+"&version=2";
+                        HttpHelper.getUtils().send(HttpRequest.HttpMethod.GET,path,new RequestCallBack<String>() {
+                            @Override
+                            public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                                try {
+                                    Log.d("----------aaaa----------", objectResponseInfo.result);
+                                    JSONObject js = new JSONObject(objectResponseInfo.result);
+                                    JSONArray arr = js.getJSONArray("courses");
 
+                                    for (int i = 0; i < arr.length(); i++) {
+                                        cous = new Cous();
+                                        JSONObject json1 = arr.getJSONObject(i);
+                                        cous.setBgUrl(json1.getString("bgUrl"));
+                                        cous.setEnrollNum(json1.getInt("enrollNum"));
+                                        cous.setIconUrl(json1.getString("iconUrl"));
+
+//                        if ()
+//                        double listPrice = json1.getDouble("listPrice");
+//                        if(listPrice!=0){
+//                            cous.setListPrice(json1.getDouble("listPrice"));
+//
+//                        }
+                                        JSONArray arr2 = json1.getJSONArray("marks");
+                                        List<Marks> listmarks = new ArrayList<Marks>();
+                                        for (int j = 0; j < arr2.length(); j++) {
+                                            marks = new Marks();
+                                            JSONObject obj1 = arr2.getJSONObject(j);
+                                            marks.setColor(obj1.getString("color"));
+                                            marks.setImageUrl(obj1.getString("imageUrl"));
+                                            marks.setTitle(obj1.getString("title"));
+
+                                            listmarks.add(marks);
+                                        }
+                                        cous.setMarks(listmarks);
+                                        cous.setPrice(json1.getDouble("price"));
+                                        cous.setProviderName(json1.getString("providerName"));
+                                        cous.setRate(json1.getInt("rate"));
+                                        cous.setTitle(json1.getString("title"));
+                                        Lists.Jplist.add(cous);
+                                    }
+                                    handler.sendEmptyMessage(0);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(HttpException e, String s) {
+                                Toast.makeText(getActivity(), "连接失败请检查网络连接", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
 

@@ -43,6 +43,14 @@ public class BoutiqueAdapter extends BaseAdapter{
         return position;
     }
 
+    public void Clear(){
+        list.clear();
+        notifyDataSetChanged();
+    }
+    public void Add(List<Cous> lists){
+        list.addAll(lists);
+        notifyDataSetChanged();
+    }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView==null){
@@ -50,7 +58,7 @@ public class BoutiqueAdapter extends BaseAdapter{
             convertView.setTag(new BoutiqueHolder(convertView));
         }
         BoutiqueHolder holder= ((BoutiqueHolder) convertView.getTag());
-        Cous cous= Lists.Jplist.get(position);
+        Cous cous= list.get(position);
         holder.listprice.setVisibility(View.GONE);
         holder.view2.setVisibility(View.GONE);
         holder.marks.setVisibility(View.GONE);

@@ -51,7 +51,7 @@ public class RankAdapter extends BaseAdapter{
             convertView.setTag(new BoutiqueHolder(convertView));
         }
         BoutiqueHolder holder= ((BoutiqueHolder) convertView.getTag());
-        Rank rank= Lists.ranks.get(position);
+        Rank rank= list.get(position);
         holder.listprice.setVisibility(View.GONE);
         holder.view2.setVisibility(View.GONE);
         holder.marks.setVisibility(View.GONE);
