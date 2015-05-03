@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
     private boutiquevpdata boutiquevpdata;
     private View[] views=new View[3];
     private RadioGroup group;
+    private RadioButton[] rbs=new RadioButton[3];
     private Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -73,11 +75,14 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
     //设置最大的ViewPager
     private void init(View view) {
 
+
         fondviewpager.setOnPageChangeListener(this);
         views[0] = view.findViewById(R.id.foundview1);
         views[1] = view.findViewById(R.id.foundview2);
         views[2] = view.findViewById(R.id.foundview3);
-
+        rbs[0]= ((RadioButton) view.findViewById(R.id.fragment_found_rb1));
+        rbs[1]= ((RadioButton) view.findViewById(R.id.fragment_found_rb2));
+        rbs[2]= ((RadioButton) view.findViewById(R.id.fragment_found_rb3));
 
     }
 
@@ -271,6 +276,7 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
 
     @Override
     public void onPageSelected(int position) {
+        group.check(rbs[position].getId());
         for(int i=0;i<views.length;i++){
             if(position==i){
                 views[i].setVisibility(View.VISIBLE);
