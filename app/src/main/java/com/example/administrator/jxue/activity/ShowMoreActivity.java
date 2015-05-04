@@ -1,10 +1,12 @@
-package com.example.administrator.jxue;
+package com.example.administrator.jxue.activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.administrator.jxue.R;
 
 
 public class ShowMoreActivity extends ActionBarActivity {

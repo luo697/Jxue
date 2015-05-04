@@ -8,11 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.administrator.jxue.BitmapHelper;
+import com.example.administrator.jxue.Helper.BitmapHelper;
 import com.example.administrator.jxue.R;
-import com.example.administrator.jxue.bean.Cous;
 import com.example.administrator.jxue.bean.Rank;
-import com.example.administrator.jxue.data.Lists;
 
 import java.net.URLEncoder;
 import java.util.List;

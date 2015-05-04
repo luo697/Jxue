@@ -1,20 +1,22 @@
 package com.example.administrator.jxue.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.administrator.jxue.HttpHelper;
+import com.example.administrator.jxue.Helper.HttpHelper;
 import com.example.administrator.jxue.R;
 import com.example.administrator.jxue.adapter.foundVPadapter;
 import com.example.administrator.jxue.bean.Assortment;
@@ -61,6 +63,7 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
     };
     private View view;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_found,container,false);
@@ -72,6 +75,20 @@ public class FoundFragment extends Fragment implements ViewPager.OnPageChangeLis
         init(view);
         return view;
     }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        setHasOptionsMenu(true);
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+    }
+
     //设置最大的ViewPager
     private void init(View view) {
 

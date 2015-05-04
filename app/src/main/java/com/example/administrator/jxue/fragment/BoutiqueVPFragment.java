@@ -6,10 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.administrator.jxue.BitmapHelper;
+import com.example.administrator.jxue.Helper.BitmapHelper;
 import com.example.administrator.jxue.ImageViewWithWidth;
 import com.example.administrator.jxue.R;
 import com.example.administrator.jxue.bean.boutiquevpdata;

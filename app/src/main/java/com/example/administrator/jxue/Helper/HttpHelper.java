@@ -1,4 +1,4 @@
-package com.example.administrator.jxue;
+package com.example.administrator.jxue.Helper;
 
 import com.lidroid.xutils.HttpUtils;
 

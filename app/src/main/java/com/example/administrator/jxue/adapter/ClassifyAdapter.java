@@ -10,11 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.example.administrator.jxue.BitmapHelper;
+import com.example.administrator.jxue.Helper.BitmapHelper;
 import com.example.administrator.jxue.R;
 import com.example.administrator.jxue.bean.Assortment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
